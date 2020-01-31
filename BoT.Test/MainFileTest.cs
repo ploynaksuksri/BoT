@@ -13,7 +13,7 @@ namespace BoT.Test
      
         public MainFileTest()
         {
-            _manager = new MainFileManager();
+            _manager = new MainFileManager(new CodeManager());
         }
 
         [Fact]

@@ -11,26 +11,33 @@ namespace BoT.Business
         public const char Delimiter = ';';
         public const int NoColumns = 17;
 
+        private CodeManager _codeManager;
+        public MainFileManager(CodeManager codeManager)
+        {
+            _codeManager = codeManager;
+        }
+
         public List<MainFile> ReadReport(string filePath)
         {
             List<MainFile> reports = new List<MainFile>();
 
             string[] lines = CSVHelper.ReadLine(filePath);
-     
-            foreach(var line in lines.Skip(1))
+
+            foreach (var line in lines.Skip(1))
             {
                 var items = CSVHelper.ParseLine(line, Delimiter);
                 if (items.Length == NoColumns)
                 {
-                    reports.Add(GetItem(items));
-                }               
+                    var item = GetItem(items);
+                    TransformItem(item);
+                    reports.Add(item);
+                }
             }
             return reports;
         }
 
         public MainFile GetItem(string[] items)
         {
-
             return new MainFile
             {
                 BotLicenseNo = items[0],
@@ -55,6 +62,13 @@ namespace BoT.Business
                 ThaiBahtPrincipal = items[15].GetDecimal(),
                 MTCN = items[16]
             };
+        }
+
+        public void TransformItem(MainFile item)
+        {
+            item.CurrencyCode = _codeManager.GetCurrencyCode(item.CurrencyCode);
+            item.Nationality = _codeManager.GetCountryCode(item.Nationality);
+            item.Customer2.CountryCode = _codeManager.GetCountryCode(item.Customer2.CountryCode);
         }
 
     }
