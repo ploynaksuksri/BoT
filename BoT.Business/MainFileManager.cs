@@ -6,13 +6,13 @@ using System.Linq;
 
 namespace BoT.Business
 {
-    public class MainFileManager
+    public class MainFileManager: IReportManager<MainFile>
     {
         public const char Delimiter = ';';
         public const int NoColumns = 17;
 
-        private CodeManager _codeManager;
-        public MainFileManager(CodeManager codeManager)
+        private CodeConversionManager _codeManager;
+        public MainFileManager(CodeConversionManager codeManager)
         {
             _codeManager = codeManager;
         }
@@ -71,5 +71,24 @@ namespace BoT.Business
             item.Customer2.CountryCode = _codeManager.GetCountryCode(item.Customer2.CountryCode);
         }
 
+
+
+
+        #region Disposable
+
+        private bool disposed = false;
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            disposed = true;
+        }
+        #endregion
     }
 }

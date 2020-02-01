@@ -7,17 +7,17 @@ using System.Linq;
 
 namespace BoT.Business
 {
-    public class CodeManager : IDisposable
+    public class CodeConversionManager : IDisposable
     {
         public static List<CodeConversion> CountryCodes { get; set; } = new List<CodeConversion>();
 
         public static List<CodeConversion> CurrencyCodes { get; set; } = new List<CodeConversion>();
 
-        public CodeManager()
+        public CodeConversionManager()
         {
         }
 
-        public CodeManager(string countryCodePath, string currencyCodePath)
+        public CodeConversionManager(string countryCodePath, string currencyCodePath)
         {
             CountryCodes = ReadCodes(countryCodePath);
             CurrencyCodes = ReadCodes(currencyCodePath);
@@ -46,14 +46,15 @@ namespace BoT.Business
             return codes;
         }
 
+
+
+        #region Disposable
+        private bool disposed = false;
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
-        private bool disposed = false;
-
         protected virtual void Dispose(bool disposing)
         {
             if (disposed)
@@ -67,5 +68,6 @@ namespace BoT.Business
 
             disposed = true;
         }
+        #endregion
     }
 }

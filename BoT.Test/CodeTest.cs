@@ -11,7 +11,7 @@ namespace BoT.Test
         public const string CountryCodeFile = @"C:\central\project\BoT\BoT.Business\Codes\CountryCode.json";
         public const string CurrencyCodeFile = @"C:\central\project\BoT\BoT.Business\Codes\CurrencyCode.json";
 
-        private CodeManager _manager = new CodeManager();
+        private CodeConversionManager _manager = new CodeConversionManager();
 
         [Theory]
         [InlineData(CountryCodeFile,5)]
