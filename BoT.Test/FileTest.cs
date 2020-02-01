@@ -14,7 +14,7 @@ namespace BoT.Test
         public void GetMainFile()
         {
             string filePath = @"C:\central\MMTSA39_20191231_MTD.txt";
-            var manager = new MainFileManager(new CodeConversionManager());
+            var manager = new TransactionManager(new CodeConversionManager());
 
             List<Transaction> reports = manager.ReadReport(filePath);
 

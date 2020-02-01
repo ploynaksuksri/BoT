@@ -6,13 +6,13 @@ using System.Linq;
 
 namespace BoT.Business
 {
-    public class MainFileManager: IReportManager<Transaction>
+    public class TransactionManager: IReportManager<Transaction>
     {
         public const char Delimiter = ';';
         public const int NoColumns = 17;
 
         private CodeConversionManager _codeManager;
-        public MainFileManager(CodeConversionManager codeManager)
+        public TransactionManager(CodeConversionManager codeManager)
         {
             _codeManager = codeManager;
         }
