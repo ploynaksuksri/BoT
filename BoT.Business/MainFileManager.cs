@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace BoT.Business
 {
-    public class MainFileManager: IReportManager<MainFile>
+    public class MainFileManager: IReportManager<Transaction>
     {
         public const char Delimiter = ';';
         public const int NoColumns = 17;
@@ -17,9 +17,9 @@ namespace BoT.Business
             _codeManager = codeManager;
         }
 
-        public List<MainFile> ReadReport(string filePath)
+        public List<Transaction> ReadReport(string filePath)
         {
-            List<MainFile> reports = new List<MainFile>();
+            List<Transaction> reports = new List<Transaction>();
 
             string[] lines = CSVHelper.ReadLine(filePath);
 
@@ -36,9 +36,9 @@ namespace BoT.Business
             return reports;
         }
 
-        public MainFile GetItem(string[] items)
+        public Transaction GetItem(string[] items)
         {
-            return new MainFile
+            return new Transaction
             {
                 BotLicenseNo = items[0],
                 TransactionDateString = items[1],
@@ -64,7 +64,7 @@ namespace BoT.Business
             };
         }
 
-        public void TransformItem(MainFile item)
+        public void TransformItem(Transaction item)
         {
             item.CurrencyCode = _codeManager.GetCurrencyCode(item.CurrencyCode);
             item.Nationality = _codeManager.GetCountryCode(item.Nationality);

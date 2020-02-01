@@ -2,7 +2,7 @@
 
 namespace BoT.Models
 {
-    public class MainFile
+    public class Transaction
     {
         public string MTCN { get; set; }
         public string BotLicenseNo { get; set; }

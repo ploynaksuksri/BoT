@@ -21,7 +21,7 @@ namespace BoT.Business
             _statusFileManager = new StatusFileManager();
         }
 
-        public List<MainFile> GetFilteredReports()
+        public List<Transaction> GetFilteredReports()
         {
             var transactions = _mainFileManager.ReadReport(_fileList.MainFile);
             var approvedTransactions = _statusFileManager.ReadReport(_fileList.StatusFile);
