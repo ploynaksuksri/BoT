@@ -1,5 +1,6 @@
 ﻿using BoT.Business.Managers;
 using BoT.Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -11,7 +12,9 @@ namespace BoT.Business
         private TransactionManager _mainFileManager;
         private StatusFileManager _statusFileManager;
         private RefundFileManager _refundFileManager;
+        private AmazonFileManager _amazoneFileManager;
         private FileList _fileList;
+
 
         public ReportGenerator(FileList fileList)
         {
@@ -20,6 +23,7 @@ namespace BoT.Business
             _mainFileManager = new TransactionManager(codeManager);
             _statusFileManager = new StatusFileManager();
             _refundFileManager = new RefundFileManager();
+            _amazoneFileManager = new AmazonFileManager();
         }
 
         public List<Transaction> GetFilteredReports()
@@ -30,7 +34,7 @@ namespace BoT.Business
 
             var approvedTransactions = _statusFileManager.GetApprovedTransactions(_fileList.StatusFile);
             transactions = transactions.Where(e => approvedTransactions.Exists(a => a.MTCN == e.MTCN)).ToList();
-            
+
             Debug.Assert(approvedTransactions.Count == 5225);
             approvedTransactions.Clear();
 
@@ -40,6 +44,18 @@ namespace BoT.Business
 
             //refundTransactions.Clear();
 
+            var amazonList = _amazoneFileManager.ReadReport(_fileList.AmazonFile);
+
+            foreach(var amazon in amazonList)
+            {
+                var transaction = transactions.FirstOrDefault(e => e.MTCN == amazon.MTCN);
+                if (transaction != null)
+                {
+                    transaction.IdNumber = amazon.IdNumber;
+                    transaction.Nationality = amazon.Nationality;
+                    transaction.IsAmazon = true;
+                }
+            }
 
             return transactions.ToList();
         }
@@ -47,6 +63,39 @@ namespace BoT.Business
         private bool IsRefunded(Transaction transaction, RefundFile refund)
         {
             return refund.MTCN == transaction.MTCN || refund.OldMTCN == transaction.MTCN;
+        }
+
+        // Step 7
+        private void SetNationalityCode(List<Transaction> transactions)
+        {
+            transactions.ForEach(e => GetThaiCode(e.Nationality));
+        }
+
+        // Step 8
+        private void SetCustomerTypeCode(List<Transaction> transactions, List<AmazonFile> amazonList)
+        {
+            transactions.Where(e => e.IsAmazon).ToList().ForEach(e =>
+            {
+                e.CustomerType = e.IsAmazon ? TransactionConst.Personal : TransactionConst.NonPersonal;
+            });
+        }
+
+        // Step 9
+        private void Step9()
+        {
+
+        }
+        private string GetThaiCode(string nationality)
+        {
+
+            if (nationality.Equals("TH", StringComparison.OrdinalIgnoreCase))
+            {
+                return TransactionConst.IsThai;
+            }
+            else
+            {
+                return TransactionConst.NonThai;
+            }
         }
     }
 }

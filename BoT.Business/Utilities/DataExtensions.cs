@@ -25,8 +25,8 @@ namespace BoT.Business.Utilities
         {
             if (string.IsNullOrEmpty(input))
                 return input;
-
-            return input.Replace(character, string.Empty);
+      
+            return input.Trim().Replace(character, string.Empty);
         }
     }
 }

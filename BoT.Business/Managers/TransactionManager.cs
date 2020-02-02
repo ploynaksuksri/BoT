@@ -69,6 +69,21 @@ namespace BoT.Business.Managers
             item.CurrencyCode = _codeManager.GetCurrencyCode(item.CurrencyCode);
             item.Nationality = _codeManager.GetCountryCode(item.Nationality);
             item.Customer2.CountryCode = _codeManager.GetCountryCode(item.Customer2.CountryCode);
+
+            var newTransactionType = string.Empty;
+            switch (item.TransactionType)
+            {
+                case "1":
+                    newTransactionType = "11";
+                    break;
+                case "2":
+                    newTransactionType = "12";
+                    break;
+                default:
+                    newTransactionType = item.TransactionType;
+                    break;
+            }
+            item.TransactionType = newTransactionType;
         }
 
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BoT.Models
+﻿namespace BoT.Models
 {
     public class FileList
     {
@@ -10,6 +6,7 @@ namespace BoT.Models
         public string StatusFile { get; set; }
         public string CountryCodeFile { get; set; }
         public string CurrencyCodeFile { get; set; }
-        public string RefundFile {get;set;}
+        public string RefundFile { get; set; }
+        public string AmazonFile { get; set; }
     }
 }
