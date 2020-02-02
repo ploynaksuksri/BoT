@@ -35,7 +35,7 @@ namespace BoT.Business
 
         private string GetCode(List<CodeConversion> codes, string oldCode)
         {
-            var newCode = codes.Where(e => e.From == oldCode).Select(e => e.To).FirstOrDefault();
+            var newCode = codes.Where(e => e.From.Equals(oldCode, StringComparison.OrdinalIgnoreCase)).Select(e => e.To).FirstOrDefault();
             return string.IsNullOrEmpty(newCode) ? oldCode : newCode;
         }
 
