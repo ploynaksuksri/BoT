@@ -1,9 +1,8 @@
-﻿using BoT.Models;
-using System;
+﻿using BoT.Business.Managers;
+using BoT.Models;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 
 namespace BoT.Business
 {
@@ -28,11 +27,10 @@ namespace BoT.Business
             Debug.Assert(transactions.Count == 30492);
             Debug.Assert(approvedTransactions.Count == 5225);
 
-            transactions = transactions.Where(e => approvedTransactions.Exists(a => a.MTCN == e.MTCN)).ToList();          
+            transactions = transactions.Where(e => approvedTransactions.Exists(a => a.MTCN == e.MTCN)).ToList();
             Debug.Assert(transactions.Count == 4892);
 
             return transactions;
         }
-        
     }
 }

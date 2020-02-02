@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BoT.Business
+namespace BoT.Business.Managers
 {
     public interface IReportManager<T> : IDisposable where T : class
     {

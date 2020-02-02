@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace BoT.Business
+namespace BoT.Business.Managers
 {
     public class CodeConversionManager : IDisposable
     {

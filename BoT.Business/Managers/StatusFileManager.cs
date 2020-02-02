@@ -3,15 +3,13 @@ using BoT.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace BoT.Business
+namespace BoT.Business.Managers
 {
     public class StatusFileManager : IReportManager<StatusFile>
     {
         public const char Delimiter = ';';
         public const int NoColumns = 26;
-
 
         public List<StatusFile> ReadReport(string filePath)
         {
@@ -28,12 +26,11 @@ namespace BoT.Business
                     if (item.Status.Equals(StatusFileConsts.Approved))
                     {
                         reports.Add(item);
-                    }               
+                    }
                 }
             }
             return reports;
         }
-
 
         public StatusFile GetItem(string[] items)
         {
@@ -62,15 +59,16 @@ namespace BoT.Business
             throw new NotImplementedException();
         }
 
-
         #region Disposable
 
         private bool disposed = false;
+
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
         protected virtual void Dispose(bool disposing)
         {
             if (disposed)
@@ -78,6 +76,7 @@ namespace BoT.Business
 
             disposed = true;
         }
-        #endregion
+
+        #endregion Disposable
     }
 }

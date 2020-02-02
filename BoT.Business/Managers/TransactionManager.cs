@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BoT.Business
+namespace BoT.Business.Managers
 {
     public class TransactionManager: IReportManager<Transaction>
     {
