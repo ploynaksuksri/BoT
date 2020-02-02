@@ -13,6 +13,7 @@ namespace BoT.Test
         public const string CurrencyCodeFile = @"C:\central\project\BoT\BoT.Business\Codes\CurrencyCode.json";
         public const string MainFile = @"C:\central\MMTSA39_20191231_MTD.txt";
         public const string StatusFile = @"C:\central\report2.csv";
+        public const string RefundFile = @"C:\central\refund.xlsx";
 
         [Fact]
         public void Test()
@@ -22,7 +23,8 @@ namespace BoT.Test
                 MainFile = MainFile,
                 StatusFile = StatusFile,
                 CountryCodeFile = CountryCodeFile,
-                CurrencyCodeFile = CurrencyCodeFile
+                CurrencyCodeFile = CurrencyCodeFile,
+                RefundFile = RefundFile
             };
 
             ReportGenerator generator = new ReportGenerator(fileList);

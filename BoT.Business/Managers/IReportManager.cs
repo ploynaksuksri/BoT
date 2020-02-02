@@ -4,10 +4,8 @@ using System.Text;
 
 namespace BoT.Business.Managers
 {
-    public interface IReportManager<T> : IDisposable where T : class
+    public interface IReportManager<T> where T : class
     {
         List<T> ReadReport(string filePath);
-        T GetItem(string[] items);
-        void TransformItem(T item);
     }
 }

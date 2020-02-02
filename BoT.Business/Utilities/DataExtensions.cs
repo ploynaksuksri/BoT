@@ -20,5 +20,13 @@ namespace BoT.Business.Utilities
                 return 0m;
             }
         }
+
+        public static string RemoveCharacterOnMTCN(this string input, string character)
+        {
+            if (string.IsNullOrEmpty(input))
+                return input;
+
+            return input.Replace(character, string.Empty);
+        }
     }
 }

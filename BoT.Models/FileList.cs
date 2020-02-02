@@ -10,5 +10,6 @@ namespace BoT.Models
         public string StatusFile { get; set; }
         public string CountryCodeFile { get; set; }
         public string CurrencyCodeFile { get; set; }
+        public string RefundFile {get;set;}
     }
 }

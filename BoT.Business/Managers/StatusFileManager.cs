@@ -11,6 +11,12 @@ namespace BoT.Business.Managers
         public const char Delimiter = ';';
         public const int NoColumns = 26;
 
+        public List<StatusFile> GetApprovedTransactions(string filePath)
+        {
+            var transactions = ReadReport(filePath);
+            return transactions.Where(e => e.Status.Equals(StatusFileConsts.Approved)).ToList();
+        }
+
         public List<StatusFile> ReadReport(string filePath)
         {
             List<StatusFile> reports = new List<StatusFile>();
@@ -23,10 +29,7 @@ namespace BoT.Business.Managers
                 if (items.Length == NoColumns)
                 {
                     var item = GetItem(items);
-                    if (item.Status.Equals(StatusFileConsts.Approved))
-                    {
-                        reports.Add(item);
-                    }
+                    reports.Add(item);
                 }
             }
             return reports;
