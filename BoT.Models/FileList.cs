@@ -8,5 +8,6 @@
         public string CurrencyCodeFile { get; set; }
         public string RefundFile { get; set; }
         public string AmazonFile { get; set; }
+        public string ComplianceFile { get; set; }
     }
 }

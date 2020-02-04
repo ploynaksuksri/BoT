@@ -74,5 +74,30 @@ namespace BoT.Test
 
             Assert.Equal(expected, refundTransactions.Count);
         }
+
+        [Fact]
+        public void GetComplianceFile()
+        {
+            var manager = new ComplianceFileManager(@"C:\central\project\BoT\BoT.Business\Codes\DocumentTypeCode.json");
+            string filePath = @"C:\central\Compliance_Dec19.xlsx";
+            List<ComplianceFile> complianceFiles = manager.ReadReport(filePath);
+
+            var expected = 27169;
+
+            Assert.Equal(expected, complianceFiles.Count);
+        }
+
+        [Fact]
+        public void GetDocumentCodeFile()
+        {
+            string filePath = @"C:\central\project\BoT\BoT.Business\Codes\DocumentTypeCode.json";
+            var manager = new ComplianceFileManager();
+
+            Dictionary<string, string> codes = manager.ReadCodes(filePath);
+
+            var expected = 8;
+
+            Assert.Equal(expected, codes.Count);
+        }
     }
 }
