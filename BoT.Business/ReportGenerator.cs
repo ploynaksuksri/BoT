@@ -39,12 +39,15 @@ namespace BoT.Business
             approvedTransactions.Clear();
 
 
-            //var refundTransactions = _refundFileManager.ReadReport(_fileList.RefundFile);
-            //transactions = transactions.Where(t => !refundTransactions.Exists(r => IsRefunded(t,r))).ToList();
+            var refundTransactions = _refundFileManager.ReadReport(_fileList.RefundFile);
+            transactions = transactions.Where(t => !refundTransactions.Exists(r => IsRefunded(t, r))).ToList();
 
-            //refundTransactions.Clear();
+
+            Debug.Assert(refundTransactions.Count == 171);
+            refundTransactions.Clear();
 
             var amazonList = _amazoneFileManager.ReadReport(_fileList.AmazonFile);
+            Debug.Assert(amazonList.Count == 13);
 
             foreach(var amazon in amazonList)
             {

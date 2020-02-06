@@ -27,12 +27,19 @@ namespace BoT.Business.Managers
                 var worksheet = workbook.Worksheet(1);
                 foreach (IXLRow row in worksheet.RowsUsed().Skip(2))
                 {
-                    refundTransactions.Add(new RefundFile
+                    if (!IsEmptyRow(row))
                     {
-                        MTCN = row.Cell(4).GetValue<string>().RemoveCharacterOnMTCN(MTCNChar),
-                        OldMTCN = row.Cell(5).GetValue<string>().RemoveCharacterOnMTCN(MTCNChar),
-                        SenderName = row.Cell(6).GetValue<string>()
-                    });
+                        refundTransactions.Add(new RefundFile
+                        {
+                            MTCN = row.Cell(4).GetValue<string>().RemoveCharacterOnMTCN(MTCNChar),
+                            OldMTCN = row.Cell(5).GetValue<string>().RemoveCharacterOnMTCN(MTCNChar),
+                            SenderName = row.Cell(6).GetValue<string>()
+                        });
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
             }
             return refundTransactions;
@@ -40,7 +47,10 @@ namespace BoT.Business.Managers
 
 
 
-
+        private bool IsEmptyRow(IXLRow row)
+        {
+            return string.IsNullOrEmpty(row.Cell(1).GetValue<string>());
+        }
 
 
     }

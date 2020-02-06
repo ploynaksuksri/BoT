@@ -34,7 +34,7 @@ namespace BoT.Test
             var filtered = generator.GetFilteredReports();         
 
 
-            var expected = 4892;
+            var expected = 4811;
 
             Assert.Equal(expected, filtered.Count);
         }
