@@ -1,0 +1,34 @@
+﻿[
+  {
+    "DocumentType": "National Identification",
+    "Code": "324001"
+  },
+  {
+    "DocumentType": "Passport",
+    "Code": "324002"
+  },
+  {
+    "DocumentType": "Driver’s License",
+    "Code": "324012"
+  },
+  {
+    "DocumentType": "Other Thai Government",
+    "Code": "324012"
+  },
+  {
+    "DocumentType": "Alien Card",
+    "Code": "324012"
+  },
+  {
+    "DocumentType": "Others",
+    "Code": "324012"
+  },
+  {
+    "DocumentType": "Other Government issued photo identification",
+    "Code": "324012"
+  },
+  {
+    "DocumentType": "Civil Servant ID",
+    "Code": "324012"
+  }
+]

@@ -1,0 +1,55 @@
+[
+  {
+    "From": "EUR",
+    "To": "CYP"
+  },
+  {
+    "From": "CSK",
+    "To": "CZK"
+  },
+  {
+    "From": "VEB",
+    "To": "VEF"
+  },
+  {
+    "From": "VIB",
+    "To": "VEF"
+  },
+  {
+    "From": "MXP",
+    "To": "MXN"
+  },
+  {
+    "From": "UYP",
+    "To": "UYU"
+  },
+  {
+    "From": "SDG",
+    "To": "SDD"
+  },
+  {
+    "From": "TRY",
+    "To": "TRL"
+  },
+  {
+    "From": "ZMK",
+    "To": "ZMW"
+  },
+  {
+    "From": "ZWD",
+    "To": "ZWL"
+  },
+  {
+    "From": "AON",
+    "To": "AOA"
+  },
+  {
+    "From": "BBO",
+    "To": "BBD"
+  },
+  {
+    "From": "MRU",
+    "To": "MRO"
+  }
+
+]

@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <UserSecretsId>3fca666a-f4f2-46d7-b98d-0bc522093f6b</UserSecretsId>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BoT.Models\BoT.Models.csproj" />
+    <ProjectReference Include="..\BoT.Models\BoT.Models2.csproj" />
   </ItemGroup>
 
 </Project>

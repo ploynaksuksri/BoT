@@ -30,20 +30,20 @@ namespace BoT.Test
 
             List<StatusFile> statusTransactions = manager.ReadReport(filePath);
 
-            var expected = 11343;
+            var expected = 11404;
 
             Assert.Equal(expected, statusTransactions.Count);
         }
 
         [Fact]
-        public void GetApprovedOnly()
+        public void GetNonApprovedOnly()
         {
             string filePath = @"C:\central\report2.csv";
             var manager = new StatusFileManager();
 
-            List<StatusFile> statusTransactions = manager.GetApprovedTransactions(filePath);
+            List<StatusFile> statusTransactions = manager.GetNonApprovedTransaction(filePath);
 
-            var expected = 5225;
+            var expected = 6179;
             
             Assert.Equal(expected, statusTransactions.Count);
         }
@@ -56,7 +56,7 @@ namespace BoT.Test
 
             List<RefundFile> refundTransactions = manager.ReadReport(filePath);
 
-            var expected = 1044135;
+            var expected = 171;
 
             Assert.Equal(expected, refundTransactions.Count);
         }

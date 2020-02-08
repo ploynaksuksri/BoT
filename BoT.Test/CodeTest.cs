@@ -11,7 +11,7 @@ namespace BoT.Test
         private CodeConversionManager _manager = new CodeConversionManager();
 
         [Theory]
-        [InlineData(CountryCodeFile, 5)]
+        //[InlineData(CountryCodeFile, 5)]
         [InlineData(CurrencyCodeFile, 13)]
         public void ReadCodes(string filePath, int expectedNo)
         {
