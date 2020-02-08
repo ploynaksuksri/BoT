@@ -28,40 +28,36 @@ namespace BoT.Business
 
         public List<Transaction> GetFilteredReports()
         {
+            // Step1 - Read transactions from file
             List<Transaction> transactions = _mainFileManager.ReadReport(_fileList.MainFile).ToList();
-            Debug.Assert(transactions.Count == 30492);
 
 
+            // Step2 - Removed non approved transactions from online transaciton files
             var onlineTransaction = _statusFileManager.ReadReport(_fileList.StatusFile);
-
             var discardTranasctions = new List<Transaction>();
             foreach(var t in transactions)
             {
                 var found = onlineTransaction.FirstOrDefault(e => e.MTCN == t.MTCN);
-                if (found != null && found.MTCN == t.MTCN && 
-                    (found.Status != StatusFileConsts.Approved || found.Status == "STAGED"))
+                if (found != null && found.MTCN == t.MTCN && (found.Status != StatusFileConsts.Approved))
                 {
                     discardTranasctions.Add(t);
                 }
             }
             transactions = transactions.Except(discardTranasctions).ToList();
+        
 
-            onlineTransaction.Clear();
 
-
+            // Step3 - Removed refunded transactions
             var refundTransactions = _refundFileManager.ReadReport(_fileList.RefundFile);
-            Debug.Assert(refundTransactions.Count == 171);
-
-
             transactions = transactions.Where(t => !refundTransactions.Exists(r => IsRefunded(t, r))).ToList();
+           
 
 
-            
-            refundTransactions.Clear();
+            // Step4 - Replace country and currency code when reading transaction from file
 
+
+            // Step5 - Replace information from Amazon file
             var amazonList = _amazoneFileManager.ReadReport(_fileList.AmazonFile);
-            Debug.Assert(amazonList.Count == 13);
-
             foreach(var amazon in amazonList)
             {
                 var transaction = transactions.FirstOrDefault(e => e.MTCN == amazon.MTCN);
@@ -73,7 +69,20 @@ namespace BoT.Business
                 }
             }
 
+            // Step6 - Update transaction type to BoT format
+
+
+            // Step7 - Set IsThai or NonThai customer type
+            SetForeignCustomerCode(transactions);
+
+            // Step8 - Set Customer type from Amazon list
+            SetCustomerTypeCode(transactions, amazonList);
+
+            onlineTransaction.Clear();
+            discardTranasctions.Clear();
+            refundTransactions.Clear();
             return transactions.ToList();
+           
         }
 
         private bool IsRefunded(Transaction transaction, RefundFile refund)
@@ -82,9 +91,9 @@ namespace BoT.Business
         }
 
         // Step 7
-        private void SetNationalityCode(List<Transaction> transactions)
+        private void SetForeignCustomerCode(List<Transaction> transactions)
         {
-            transactions.ForEach(e => GetThaiCode(e.Nationality));
+            transactions.ForEach(e => e.ForeignCustomerCode = GetThaiCode(e.Nationality));
         }
 
         // Step 8

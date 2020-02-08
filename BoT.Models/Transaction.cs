@@ -23,7 +23,7 @@ namespace BoT.Models
         public string ThaiCode { get; set; }
         public bool IsAmazon { get; set; }
         public string CustomerType { get; set; }
-        public string ForiengCustomer { get; set; } = string.Empty;
+        public string ForeignCustomerCode { get; set; } = string.Empty;
     }
 
     public class Customer

@@ -58,13 +58,6 @@ namespace BoT.Business.Managers
             return row.Cell(index).GetValue<string>().Trim();
         }
 
-        public void MapDocumentCode(List<ComplianceFile> complianceFiles, string codeFilePath)
-        {
-            Dictionary<string, string> codes = ReadCodes(codeFilePath);
-
-        }
-
-
 
         public Dictionary<string, string> ReadCodes(string filePath)
         {
