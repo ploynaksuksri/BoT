@@ -16,6 +16,8 @@ namespace BoT.Test
         public const string StatusFile = @"C:\central\report2.csv";
         public const string RefundFile = @"C:\central\refund.xlsx";
         public const string AmazonFile = @"C:\central\amazon.xlsx";
+        public const string ComplianceFile = @"C:\central\Compliance_Dec19.xlsx";
+        public const string DocumentTypeCodeFile = @"C:\central\project\BoT\BoT.Business\Codes\DocumentTypeCode.json";
 
         [Fact]
         public void Test()
@@ -27,7 +29,9 @@ namespace BoT.Test
                 CountryCodeFile = CountryCodeFile,
                 CurrencyCodeFile = CurrencyCodeFile,
                 RefundFile = RefundFile,
-                AmazonFile = AmazonFile
+                AmazonFile = AmazonFile,
+                ComplianceFile = ComplianceFile,
+                DocumentTypeCodeFile = DocumentTypeCodeFile
             };
 
             ReportGenerator generator = new ReportGenerator(fileList);

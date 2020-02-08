@@ -4,11 +4,11 @@ using System.Text;
 
 namespace BoT.Models
 {
-    public class ComplianceFile
+    public class RefundTransaction
     {
         public string MTCN { get; set; }
-        public string DocumentType { get; set; }
-        public string ComplianceCode { get; set; }
-    }
+        public string OldMTCN { get; set; }
+        public string SenderName { get; set; }
 
+    }
 }

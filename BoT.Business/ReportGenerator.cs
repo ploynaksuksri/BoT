@@ -13,6 +13,7 @@ namespace BoT.Business
         private StatusFileManager _statusFileManager;
         private RefundFileManager _refundFileManager;
         private AmazonFileManager _amazoneFileManager;
+        private ComplianceFileManager _complianceFileManager;
         private FileList _fileList;
 
 
@@ -24,6 +25,7 @@ namespace BoT.Business
             _statusFileManager = new StatusFileManager();
             _refundFileManager = new RefundFileManager();
             _amazoneFileManager = new AmazonFileManager();
+            _complianceFileManager = new ComplianceFileManager(_fileList.DocumentTypeCodeFile);
         }
 
         public List<Transaction> GetFilteredReports()
@@ -78,6 +80,9 @@ namespace BoT.Business
             // Step8 - Set Customer type from Amazon list
             SetCustomerTypeCode(transactions, amazonList);
 
+            // Step9 - Get Document type code from compliance file
+            GetDocumentTypeCode(transactions, _fileList.ComplianceFile);
+
             onlineTransaction.Clear();
             discardTranasctions.Clear();
             refundTransactions.Clear();
@@ -85,7 +90,7 @@ namespace BoT.Business
            
         }
 
-        private bool IsRefunded(Transaction transaction, RefundFile refund)
+        private bool IsRefunded(Transaction transaction, RefundTransaction refund)
         {
             return refund.MTCN == transaction.MTCN || refund.OldMTCN == transaction.MTCN;
         }
@@ -105,11 +110,12 @@ namespace BoT.Business
             });
         }
 
-        // Step 9
-        private void Step9()
+        // Step 9 - Compliance file
+        private void GetDocumentTypeCode(List<Transaction> transactions, string complianceFilePath)
         {
-
+            _complianceFileManager.GetDocumentTypeCode(transactions, complianceFilePath);
         }
+
         private string GetThaiCode(string nationality)
         {
 

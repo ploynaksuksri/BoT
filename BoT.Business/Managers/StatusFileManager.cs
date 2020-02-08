@@ -6,20 +6,20 @@ using System.Linq;
 
 namespace BoT.Business.Managers
 {
-    public class StatusFileManager : IReportManager<StatusFile>
+    public class StatusFileManager : IReportManager<OnlineTransaction>
     {
         public const char Delimiter = ';';
         public const int NoColumns = 26;
 
-        public List<StatusFile> GetNonApprovedTransaction(string filePath)
+        public List<OnlineTransaction> GetNonApprovedTransaction(string filePath)
         {
             var transactions = ReadReport(filePath);
             return transactions.Where(e => !e.Status.Equals(StatusFileConsts.Approved)).ToList();
         }
 
-        public List<StatusFile> ReadReport(string filePath)
+        public List<OnlineTransaction> ReadReport(string filePath)
         {
-            List<StatusFile> reports = new List<StatusFile>();
+            List<OnlineTransaction> reports = new List<OnlineTransaction>();
 
             string[] lines = CSVHelper.ReadLine(filePath);
 
@@ -36,9 +36,9 @@ namespace BoT.Business.Managers
             return reports;
         }
 
-        public StatusFile GetItem(string[] items)
+        public OnlineTransaction GetItem(string[] items)
         {
-            return new StatusFile
+            return new OnlineTransaction
             {
                 TransactionDateString = TrimQuotes(items[0]),
                 TransactionId = TrimQuotes(items[1]),
@@ -58,7 +58,7 @@ namespace BoT.Business.Managers
             return item.TrimEnd('"').TrimStart('"');
         }
 
-        public void TransformItem(StatusFile item)
+        public void TransformItem(OnlineTransaction item)
         {
             throw new NotImplementedException();
         }

@@ -28,7 +28,7 @@ namespace BoT.Test
             string filePath = @"C:\central\report2.csv";
             var manager = new StatusFileManager();
 
-            List<StatusFile> statusTransactions = manager.ReadReport(filePath);
+            List<OnlineTransaction> statusTransactions = manager.ReadReport(filePath);
 
             var expected = 11404;
 
@@ -41,7 +41,7 @@ namespace BoT.Test
             string filePath = @"C:\central\report2.csv";
             var manager = new StatusFileManager();
 
-            List<StatusFile> statusTransactions = manager.GetNonApprovedTransaction(filePath);
+            List<OnlineTransaction> statusTransactions = manager.GetNonApprovedTransaction(filePath);
 
             var expected = 6179;
             
@@ -54,7 +54,7 @@ namespace BoT.Test
             string filePath = @"C:\central\refund.xlsx";
             var manager = new RefundFileManager();
 
-            List<RefundFile> refundTransactions = manager.ReadReport(filePath);
+            List<RefundTransaction> refundTransactions = manager.ReadReport(filePath);
 
             var expected = 171;
 
@@ -80,9 +80,9 @@ namespace BoT.Test
         {
             var manager = new ComplianceFileManager(@"C:\central\project\BoT\BoT.Business\Codes\DocumentTypeCode.json");
             string filePath = @"C:\central\Compliance_Dec19.xlsx";
-            List<ComplianceFile> complianceFiles = manager.ReadReport(filePath);
+            var complianceFiles = manager.ReadReport(filePath);
 
-            var expected = 27169;
+            var expected = 26972;
 
             Assert.Equal(expected, complianceFiles.Count);
         }

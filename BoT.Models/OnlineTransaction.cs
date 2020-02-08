@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BoT.Models
 {
-    public class StatusFile
+    public class OnlineTransaction
     {
         public string TransactionDateString { get; set; } //1
         public string TransactionId { get; set; } //2

@@ -9,5 +9,6 @@
         public string RefundFile { get; set; }
         public string AmazonFile { get; set; }
         public string ComplianceFile { get; set; }
+        public string DocumentTypeCodeFile { get; set; }
     }
 }

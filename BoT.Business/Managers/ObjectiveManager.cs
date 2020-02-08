@@ -4,8 +4,7 @@ using System.Text;
 
 namespace BoT.Business.Managers
 {
-    public interface IReportManager<T> where T : class
+    public class ObjectiveManager //: IReportManager<ComplianceFile>
     {
-        List<T> ReadReport(string filePath);
     }
 }

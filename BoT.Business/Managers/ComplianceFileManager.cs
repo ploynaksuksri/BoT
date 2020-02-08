@@ -10,14 +10,9 @@ using BoT.Business.Utilities;
 
 namespace BoT.Business.Managers
 {
-    public class ComplianceFileManager : IReportManager<ComplianceFile>
+    public class ComplianceFileManager //: IReportManager<ComplianceFile>
     {
         public static Dictionary<string, string> _codes = new Dictionary<string, string>();
-
-        public ComplianceFileManager()
-        {
-
-        }
 
         public ComplianceFileManager(string documentTypeFilePath)
         {
@@ -25,29 +20,43 @@ namespace BoT.Business.Managers
         }
 
 
-        public List<ComplianceFile> ReadReport(string filePath)
+        public Dictionary<string, string> ReadReport(string filePath)
         {
             if (!File.Exists(filePath))
             {
                 throw new Exception($"File {filePath} doesn't exist.");
             }
 
-            List<ComplianceFile> complianceList = new List<ComplianceFile>();
+          
+            Dictionary<string, string> complianceList = new Dictionary<string, string>();
             using (var workbook = new XLWorkbook(filePath))
             {
                 var worksheet = workbook.Worksheet(1);
                 foreach (IXLRow row in worksheet.RowsUsed().Skip(1))
                 {
-                    var item = new ComplianceFile
+                    var MTCN = GetValue(row, 1).RemoveCharacterOnMTCN("-");                  
+                    if (!complianceList.ContainsKey(MTCN))
                     {
-                        MTCN = GetValue(row, 1).RemoveCharacterOnMTCN("-"),
-                        DocumentType = GetValue(row, 40)
-                    };
-                    item.ComplianceCode = _codes[item.DocumentType];
-                    complianceList.Add(item);
+                        var documentType = GetValue(row, 40);
+                        complianceList.Add(MTCN, _codes[documentType]);
+                    }                  
                 }
             }
             return complianceList;
+        }
+
+
+
+        public void GetDocumentTypeCode(List<Transaction> transactions, string filePath)
+        {
+            var complianceList = ReadReport(filePath);
+            foreach(var t in transactions)
+            {
+                if (complianceList.TryGetValue(t.MTCN, out string documentTypeCode))
+                {
+                    t.DocumentTypeCode = documentTypeCode;
+                }
+            }           
         }
 
 

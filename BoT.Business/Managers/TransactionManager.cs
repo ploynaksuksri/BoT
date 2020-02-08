@@ -17,6 +17,11 @@ namespace BoT.Business.Managers
             _codeManager = codeManager;
         }
 
+        public TransactionManager()
+        {
+
+        }
+
         public List<Transaction> ReadReport(string filePath)
         {
             List<Transaction> reports = new List<Transaction>();

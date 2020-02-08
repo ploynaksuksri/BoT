@@ -9,19 +9,19 @@ using BoT.Models;
 
 namespace BoT.Business.Managers
 {
-    public class RefundFileManager : IReportManager<RefundFile>
+    public class RefundFileManager : IReportManager<RefundTransaction>
     {
         public const string MTCNChar = "-";
 
        
-        public List<RefundFile> ReadReport(string filePath)
+        public List<RefundTransaction> ReadReport(string filePath)
         {
             if (!File.Exists(filePath))
             {
                 throw new Exception($"File {filePath} doesn't exist.");
             }
 
-            List<RefundFile> refundTransactions = new List<RefundFile>();
+            List<RefundTransaction> refundTransactions = new List<RefundTransaction>();
             using (var workbook = new XLWorkbook(filePath))
             {
                 var worksheet = workbook.Worksheet(1);
@@ -29,7 +29,7 @@ namespace BoT.Business.Managers
                 {
                     if (!IsEmptyRow(row))
                     {
-                        refundTransactions.Add(new RefundFile
+                        refundTransactions.Add(new RefundTransaction
                         {
                             MTCN = row.Cell(4).GetValue<string>().RemoveCharacterOnMTCN(MTCNChar),
                             OldMTCN = row.Cell(5).GetValue<string>().RemoveCharacterOnMTCN(MTCNChar),

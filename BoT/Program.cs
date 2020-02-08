@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BoT.Business.Managers;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +18,15 @@ namespace BoT
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            var countryCode = GetSetting("CountryCodeFile");
+            var currencyCode = GetSetting("CurrencyCodeFile");
+            CodeConversionManager codeManager = new CodeConversionManager(countryCode, currencyCode);
+            Application.Run(new Form1(codeManager));
+        }
+
+        private static string GetSetting(string key)
+        {
+            return ConfigurationManager.AppSettings[key] ?? "";
         }
     }
 }
