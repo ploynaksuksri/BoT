@@ -47,17 +47,17 @@ namespace BoT.Business.Managers
 
 
 
-        public void GetDocumentTypeCode(List<Transaction> transactions, string filePath)
-        {
-            var complianceList = ReadReport(filePath);
-            foreach(var t in transactions)
-            {
-                if (complianceList.TryGetValue(t.MTCN, out string documentTypeCode))
-                {
-                    t.DocumentTypeCode = documentTypeCode;
-                }
-            }           
-        }
+        //public void GetDocumentTypeCode(List<Transaction> transactions, string filePath)
+        //{
+        //    var complianceList = ReadReport(filePath);
+        //    foreach(var t in transactions)
+        //    {
+        //        if (complianceList.TryGetValue(t.MTCN, out string documentTypeCode))
+        //        {
+        //            t.DocumentTypeCode = documentTypeCode;
+        //        }
+        //    }           
+        //}
 
 
     

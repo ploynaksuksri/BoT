@@ -1,4 +1,5 @@
-﻿using BoT.Business.Managers;
+﻿using BoT.Business;
+using BoT.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,10 +19,22 @@ namespace BoT
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var countryCode = GetSetting("CountryCodeFile");
-            var currencyCode = GetSetting("CurrencyCodeFile");
-            CodeConversionManager codeManager = new CodeConversionManager(countryCode, currencyCode);
-            Application.Run(new Form1(codeManager));
+            var report = GetReportGenerator();
+            Application.Run(new Form1(report));
+        }
+
+        private static ReportGenerator2 GetReportGenerator()
+        {
+            FileList fileList = new FileList
+            {
+                CountryCodeFile = GetSetting("CountryCodeFile"),
+                CurrencyCodeFile = GetSetting("CurrencyCodeFile"),
+                DocumentTypeCodeFile = GetSetting("DocumentTypeCodeFile"),
+                PaymentInstrumentCodeFile = GetSetting("PaymentInstrumentCodeFile")
+            };
+
+            ReportGenerator2 reportGenerator = new ReportGenerator2(fileList);
+            return reportGenerator;
         }
 
         private static string GetSetting(string key)
@@ -29,4 +42,5 @@ namespace BoT
             return ConfigurationManager.AppSettings[key] ?? "";
         }
     }
+
 }

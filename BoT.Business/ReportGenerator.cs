@@ -51,7 +51,7 @@ namespace BoT.Business
 
             // Step3 - Removed refunded transactions
             var refundTransactions = _refundFileManager.ReadReport(_fileList.RefundFile);
-            transactions = transactions.Where(t => !refundTransactions.Exists(r => IsRefunded(t, r))).ToList();
+           // transactions = transactions.Where(t => !refundTransactions.Exists(r => IsRefunded(t, r))).ToList();
            
 
 
@@ -85,7 +85,7 @@ namespace BoT.Business
 
             onlineTransaction.Clear();
             discardTranasctions.Clear();
-            refundTransactions.Clear();
+            //refundTransactions.Clear();
             return transactions.ToList();
            
         }
@@ -98,22 +98,22 @@ namespace BoT.Business
         // Step 7
         private void SetForeignCustomerCode(List<Transaction> transactions)
         {
-            transactions.ForEach(e => e.ForeignCustomerCode = GetThaiCode(e.Nationality));
+            //transactions.ForEach(e => e.ForeignCustomerCode = GetThaiCode(e.Nationality));
         }
 
         // Step 8
         private void SetCustomerTypeCode(List<Transaction> transactions, List<AmazonFile> amazonList)
         {
-            transactions.Where(e => e.IsAmazon).ToList().ForEach(e =>
-            {
-                e.CustomerType = e.IsAmazon ? TransactionConst.Personal : TransactionConst.NonPersonal;
-            });
+            //transactions.Where(e => e.IsAmazon).ToList().ForEach(e =>
+            //{
+            //    e.CustomerType = e.IsAmazon ? TransactionConst.Personal : TransactionConst.NonPersonal;
+            //});
         }
 
         // Step 9 - Compliance file
         private void GetDocumentTypeCode(List<Transaction> transactions, string complianceFilePath)
         {
-            _complianceFileManager.GetDocumentTypeCode(transactions, complianceFilePath);
+            //_complianceFileManager.GetDocumentTypeCode(transactions, complianceFilePath);
         }
 
         private string GetThaiCode(string nationality)

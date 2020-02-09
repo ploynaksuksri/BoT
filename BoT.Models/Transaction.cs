@@ -18,11 +18,9 @@ namespace BoT.Models
         public decimal ForeingCurrencyPrincipal { get; set; }
         public decimal ThaiBahtPrincipal { get; set; }      
 
-
+        public string FundInMethod { get; set; }
         public bool IsAmazon { get; set; }
-        public string CustomerType { get; set; }  // Step8 - 176068 นิติบุคคล
-        public string ForeignCustomerCode { get; set; } = string.Empty; // Step7 - Thai or non Thai
-        public string DocumentTypeCode { get; set; } //Step9 - Document code from compliance file
+
     }
 
     public class Customer

@@ -6,10 +6,11 @@ using System.Text;
 using System.Linq;
 using BoT.Business.Utilities;
 using BoT.Models;
+using System.Threading.Tasks;
 
 namespace BoT.Business.Managers
 {
-    public class RefundFileManager : IReportManager<RefundTransaction>
+    public class RefundFileManager // : IReportManager<RefundTransaction>
     {
         public const string MTCNChar = "-";
 
