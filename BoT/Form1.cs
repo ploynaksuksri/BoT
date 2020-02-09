@@ -50,6 +50,22 @@ namespace BoT
                 var t = _report.GetOnlineTransactions(filePath);
                 dataGridView2.DataSource = DataTableHelper.ConvertTo<OnlineTransaction>(t);
                 dataGridView2.AutoGenerateColumns = true;
+                dataGridView2.AutoResizeColumns();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog3.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                var filePath = openFileDialog3.FileName;
+                progressBar3.Visible = true;
+                var t = _report.GetRefundTransactions(filePath);
+                dataGridView3.DataSource = DataTableHelper.ConvertTo<RefundTransaction>(t);
+                dataGridView3.AutoGenerateColumns = true;
+                dataGridView3.AutoResizeColumns();
+                progressBar3.Visible = false;
             }
         }
     }

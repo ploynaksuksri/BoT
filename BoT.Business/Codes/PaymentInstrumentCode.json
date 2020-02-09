@@ -1,413 +1,494 @@
 [
   {
     "BotLicence": "MT125470005",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470012",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT325470026",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470006",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470002",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT225470025",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470003",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470011",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470004",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470014",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470001",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470008",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470009",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470010",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470022",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470021",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470023",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT425470028",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470020",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470015",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470016",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470007",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125470018",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT225470024",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125480005",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT325480008",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT225480007",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT425490015",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT225490011",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125490002",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125490010",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125480006",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125491167",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125491166",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT225490012",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT425490018",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT225510010",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125510017",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125520005",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125520002",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125520008",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT425520016",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT225530002",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT325540005",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT325540053",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125540051",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125550008",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125560002",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125560001",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT325560004",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125550006",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT325560011",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT225560009",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT425560013",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT425560012",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125570006",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT225570010",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125570007",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT425570008",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT225560003",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125580003",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125580004",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125580005",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT425580001",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT425580002",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125580006",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125580007",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT425580003",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125580010",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125580011",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125590010",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125600001",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT325600001",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125600003",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT425600001",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125610001",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT325610001",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125610007",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT225610002",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT225610004",
-    "Code": "753600001",
-    "FundInMethod": "Cash"
+    "PaymentMethodCode": "753600001",
+    "FundInMethod": "Cash",
+    "OfflineCode": "21"
   },
   {
     "BotLicence": "MT125610008",
-    "Code": "753600003",
-    "FundInMethod": "Direct Debit"
+    "PaymentMethodCode": "753600003",
+    "FundInMethod": "Direct Debit",
+    "OfflineCode": "22"
   },
   {
     "BotLicence": "MT125610008",
-    "Code": "753600004",
-    "FundInMethod": "Credit/Debit Card"
+    "PaymentMethodCode": "753600004",
+    "FundInMethod": "Credit/Debit Card",
+    "OfflineCode": "22"
   }
-
 ]

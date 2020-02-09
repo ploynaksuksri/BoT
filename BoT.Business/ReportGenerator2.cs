@@ -145,18 +145,11 @@ namespace BoT.Business
             string csv = string.Empty;      
             foreach (var t in outputs)
             {
-                csv += GetLine(t) + System.Environment.NewLine;
+                csv += t.ToString() + System.Environment.NewLine;
             }
             return csv;
         }
-        public string GetLine(OutputTransaction t)
-        {
-            return $"{t.BotLicenseNo};{t.TransactionDateString};{t.TransactionType};{t.IsThaiCode};{t.Customer1.FullName};" +
-                $"{t.IdNumber};{t.Nationality};{t.DocumentTypeCode};{t.Customer1.Address};{t.CustomerType};{t.Customer2.FullName};" +
-                $"{t.Customer2.CountryCode};;{t.ObjectiveCode};{t.BotLicenceCode};{t.PaymentInstrumentCode};" +
-                $"{t.CurrencyCode};{t.ExchangeRate};{t.ForeingCurrencyPrincipal};{t.ThaiBahtPrincipal}";
-        }
-
+       
 
     }
 }

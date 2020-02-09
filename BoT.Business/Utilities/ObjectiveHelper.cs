@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BoT.Business.Managers
+namespace BoT.Business.Utilities
 {
     public class ObjectiveHelper
     {

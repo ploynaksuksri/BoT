@@ -28,7 +28,11 @@ namespace BoT.Business.Managers
                 var worksheet = workbook.Worksheet(1);
                 foreach (IXLRow row in worksheet.RowsUsed().Skip(2))
                 {
-                    if (!IsEmptyRow(row))
+                    if (IsEmptyRow(row))
+                    {
+                        break;
+                    }
+                    else
                     {
                         refundTransactions.Add(new RefundTransaction
                         {
@@ -36,10 +40,6 @@ namespace BoT.Business.Managers
                             OldMTCN = row.Cell(5).GetValue<string>().RemoveCharacterOnMTCN(MTCNChar),
                             SenderName = row.Cell(6).GetValue<string>()
                         });
-                    }
-                    else
-                    {
-                        break;
                     }
                 }
             }
