@@ -1,4 +1,6 @@
 ﻿using BoT.Business;
+using BoT.Business.Utilities;
+using BoT.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +27,30 @@ namespace BoT
         {
             InitializeComponent();
             _report = report;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                var filePath = openFileDialog1.FileName;
+                var t = _report.ReadTransactions(filePath);
+                dataGridView1.DataSource = DataTableHelper.ConvertTo<Transaction>(t);
+                dataGridView1.AutoGenerateColumns = true;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog2.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                var filePath = openFileDialog2.FileName;
+                var t = _report.GetOnlineTransactions(filePath);
+                dataGridView2.DataSource = DataTableHelper.ConvertTo<OnlineTransaction>(t);
+                dataGridView2.AutoGenerateColumns = true;
+            }
         }
     }
 }
