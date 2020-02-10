@@ -23,6 +23,13 @@ namespace BoT.Business.Utilities
         }
 
         
-
+        public static void Write(string filePath, string content)
+        {
+            using (var writer = new StreamWriter(filePath))
+            {
+                writer.WriteLine(content);
+                writer.Flush();
+            }
+        }
     }
 }

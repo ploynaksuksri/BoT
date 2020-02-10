@@ -1,4 +1,5 @@
 ﻿using BoT.Business.Managers;
+using BoT.Business.Utilities;
 using BoT.Models;
 using System;
 using System.Collections.Generic;
@@ -39,24 +40,21 @@ namespace BoT.Business
         public List<OnlineTransaction> GetOnlineTransactions(string filePath)
         {
             _fileList.StatusFile = filePath;
-            StatusFileManager manager = new StatusFileManager();
-            OnlineTransactions = manager.ReadReport(_fileList.StatusFile);
+            OnlineTransactions = new StatusFileManager().ReadReport(_fileList.StatusFile);
             return OnlineTransactions;
         }
 
         public List<RefundTransaction> GetRefundTransactions(string filePath)
         {
             _fileList.RefundFile = filePath;
-            RefundFileManager manager = new RefundFileManager();
-            RefundTransactions = manager.ReadReport(_fileList.RefundFile);
+            RefundTransactions = new RefundFileManager().ReadReport(_fileList.RefundFile);
             return RefundTransactions;
         }
 
         public List<AmazonFile> GetAmazonTransactions(string filePath)
         {
             _fileList.AmazonFile = filePath;
-            AmazonFileManager manager = new AmazonFileManager();
-            AmazonTransactions = manager.ReadReport(_fileList.AmazonFile);
+            AmazonTransactions = new AmazonFileManager().ReadReport(_fileList.AmazonFile);
             return AmazonTransactions;
         }
 
@@ -73,26 +71,52 @@ namespace BoT.Business
             FilteredTransactions = FilterTransactions();
             ProcessAmazonList();
 
+            BotCodeManager botCodeManager = new BotCodeManager(_fileList.BotCodeFile);
             List<OutputTransaction> output = new List<OutputTransaction>();
             foreach(var t in Transactions)
             {
-                var item = t as OutputTransaction;
+                var item = new OutputTransaction(t);
                 item.IsThaiCode = GetIsThaiCode(item.Nationality);
                 item.CustomerType = item.IsAmazon ? TransactionConst.Personal : TransactionConst.NonPersonal;
-                item.DocumentTypeCode = ComplianceDict[item.MTCN];
+                if (ComplianceDict.TryGetValue(item.MTCN, out string code))
+                {
+                    item.DocumentTypeCode = code;
+                }
+                else
+                {
+                    item.IsValid = false;
+                }
+             
                 item.ExchangeRate = Math.Round(item.ExchangeRate, 7);
-                output.Add(item);
+                botCodeManager.MapBotCode(item);
+                if (item.IsValid)
+                {
+                    output.Add(item);
+                }
             }
             return output;
+        }
+
+        public void GenerateReport()
+        {
+            var output = GetOutput();
+            var builder = new StringBuilder();
+            foreach(var t in output)
+            {
+                builder.AppendLine(t.ToString());
+            }
+            string filePath = @"C:\central\output.csv";
+            CSVHelper.Write(filePath, builder.ToString());
+
         }
 
         private List<Transaction> FilterTransactions()
         {
             var discardTranasctions = new List<Transaction>();
-            foreach (var t in Transactions)
+            foreach (var t in Transactions.Where(e => e.BotLicenseNo == "MT125610008"))
             {
                 var found = OnlineTransactions.FirstOrDefault(e => e.MTCN == t.MTCN);
-                if (found != null && found.MTCN == t.MTCN)
+                if (found != null)
                 {
                     t.FundInMethod = found.FundsInMethod;
                     if (found.Status != StatusFileConsts.Approved)

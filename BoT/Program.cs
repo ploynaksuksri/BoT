@@ -30,7 +30,7 @@ namespace BoT
                 CountryCodeFile = GetSetting("CountryCodeFile"),
                 CurrencyCodeFile = GetSetting("CurrencyCodeFile"),
                 DocumentTypeCodeFile = GetSetting("DocumentTypeCodeFile"),
-                PaymentInstrumentCodeFile = GetSetting("PaymentInstrumentCodeFile")
+                BotCodeFile = GetSetting("BotCodeFile")
             };
 
             ReportGenerator2 reportGenerator = new ReportGenerator2(fileList);

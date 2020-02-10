@@ -68,5 +68,38 @@ namespace BoT
                 progressBar3.Visible = false;
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            _report.GenerateReport();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog4.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                var filePath = openFileDialog4.FileName;
+                var t = _report.GetAmazonTransactions(filePath);
+                dataGridView4.DataSource = DataTableHelper.ConvertTo<AmazonFile>(t);
+                dataGridView4.AutoGenerateColumns = true;
+                dataGridView4.AutoResizeColumns();
+
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog5.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                var filePath = openFileDialog5.FileName;
+                var t = _report.GetComplianceList(filePath);
+                //dataGridView4.DataSource = DataTableHelper.ConvertTo<>();
+                dataGridView4.AutoGenerateColumns = true;
+                dataGridView4.AutoResizeColumns();
+
+            }
+        }
     }
 }
