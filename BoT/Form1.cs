@@ -30,16 +30,21 @@ namespace BoT
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             var result = openFileDialog1.ShowDialog();
-            if (result == DialogResult.OK)
+            var t = new List<Transaction>();
+            await Task.Run(() =>
             {
-                var filePath = openFileDialog1.FileName;
-                var t = _report.ReadTransactions(filePath);
-                dataGridView1.DataSource = DataTableHelper.ConvertTo<Transaction>(t);
-                dataGridView1.AutoGenerateColumns = true;
-            }
+                if (result == DialogResult.OK)
+                {
+                    var filePath = openFileDialog1.FileName;
+                    t = _report.ReadTransactions(filePath);
+                 
+                }
+            });
+            dataGridView1.DataSource = DataTableHelper.ConvertTo<Transaction>(t);
+            dataGridView1.AutoGenerateColumns = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
