@@ -5,28 +5,51 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using log4net;
 
 namespace BoT.Business
 {
     public class ReportGenerator2
     {
         private FileList _fileList;
-
+        public string OutputFilePath = @"C:\central\output.csv";
+        public string THOutputFilePath = @"C:\central\thoutput.csv";
         public List<Transaction> Transactions { get; set; }
         public List<OnlineTransaction> OnlineTransactions { get; set; }
         public List<RefundTransaction> RefundTransactions { get; set; }
         public List<AmazonFile> AmazonTransactions { get; set; }
         public Dictionary<string, string> ComplianceDict { get; set; }
+        public List<MonitoringFile> MonitoringTransactions { get; set; }
         public List<Transaction> FilteredTransactions { get; set; }
 
-
-
-        public ReportGenerator2(FileList fileList)
+        public Dictionary<string, string> ObjectiveCodes = new Dictionary<string, string>()
         {
+            {"01", "318059"},
+            {"02", "318012"},
+            {"03", "318013"},
+            {"04", "318209"},
+            {"05", "318132"}
+        };
+
+        private readonly log4net.ILog _logger;
+
+
+        public ReportGenerator2(ILog logger, FileList fileList)
+        {
+            _logger = logger;
             _fileList = fileList;
         }
 
+        public void Clear()
+        {
+            Transactions.Clear();
+            OnlineTransactions.Clear();
+            RefundTransactions.Clear();
+            AmazonTransactions.Clear();
+            ComplianceDict.Clear();
+            MonitoringTransactions.Clear();
+            FilteredTransactions.Clear();
+        }
 
         public List<Transaction> ReadTransactions(string filePath)
         {
@@ -40,7 +63,7 @@ namespace BoT.Business
         public List<OnlineTransaction> GetOnlineTransactions(string filePath)
         {
             _fileList.StatusFile = filePath;
-            OnlineTransactions = new StatusFileManager().ReadReport(_fileList.StatusFile);
+            OnlineTransactions = new OnlineFileManager().ReadReport(_fileList.StatusFile);
             return OnlineTransactions;
         }
 
@@ -58,7 +81,7 @@ namespace BoT.Business
             return AmazonTransactions;
         }
 
-        public Dictionary<string,string> GetComplianceList(string filePath)
+        public Dictionary<string, string> GetComplianceList(string filePath)
         {
             _fileList.ComplianceFile = filePath;
             ComplianceFileManager manager = new ComplianceFileManager(_fileList.DocumentTypeCodeFile);
@@ -66,15 +89,25 @@ namespace BoT.Business
             return ComplianceDict;
         }
 
-        public List<OutputTransaction> GetOutput()
+        public List<MonitoringFile> GetMonitoringTransactions(string filePath)
         {
+            _fileList.MonitoringFile = filePath;
+            MonitoringTransactions = new MonitoringFileManager().ReadReport(_fileList.MonitoringFile);
+            MonitoringTransactions = MonitoringTransactions.Where(e => e.IsGoods).ToList();
+            return MonitoringTransactions;
+        }
+
+        private List<OutputTransaction> GetOutput()
+        {
+            _logger.Info("Getting Output...");
             FilteredTransactions = FilterTransactions();
             ProcessAmazonList();
 
             BotCodeManager botCodeManager = new BotCodeManager(_fileList.BotCodeFile);
             List<OutputTransaction> output = new List<OutputTransaction>();
-            foreach(var t in Transactions)
+            foreach (var t in FilteredTransactions)
             {
+               
                 var item = new OutputTransaction(t);
                 item.IsThaiCode = GetIsThaiCode(item.Nationality);
                 item.CustomerType = item.IsAmazon ? TransactionConst.Personal : TransactionConst.NonPersonal;
@@ -85,29 +118,56 @@ namespace BoT.Business
                 else
                 {
                     item.IsValid = false;
+                    _logger.Info($"{item.MTCN} is missing from compliance. Can't get DocumentTypeCode");
                 }
-             
+
                 item.ExchangeRate = Math.Round(item.ExchangeRate, 7);
                 botCodeManager.MapBotCode(item);
+                if (ObjectiveCodes.TryGetValue(item.Objective, out string objectiveCode))
+                {
+                    item.ObjectiveCode = objectiveCode;
+                    if (item.Objective == "04")
+                    {
+                        var monitoringItem = MonitoringTransactions.FirstOrDefault(e => e.MTCN == item.MTCN);
+                        if (monitoringItem != null && monitoringItem.IsGoods)
+                        {
+                            item.ObjectiveCode = ObjectiveCodes["05"];
+                        }
+                    }
+                }
+
                 if (item.IsValid)
                 {
-                    output.Add(item);
+                   
                 }
+
+                output.Add(item);
+
             }
             return output;
         }
 
         public void GenerateReport()
         {
+            var mtcnRequired = true;
             var output = GetOutput();
+            var thOutputs = output.Where(e => e.Customer2.CountryCode == "TH");
+             
             var builder = new StringBuilder();
-            foreach(var t in output)
+            foreach (var t in output.Except(thOutputs))
             {
-                builder.AppendLine(t.ToString());
+                builder.AppendLine(t.ToString(mtcnRequired));
             }
-            string filePath = @"C:\central\output.csv";
-            CSVHelper.Write(filePath, builder.ToString());
+            CSVHelper.Write(OutputFilePath, builder.ToString());
+            builder.Clear();
 
+          
+            foreach(var t in thOutputs)
+            {
+                builder.AppendLine(t.ToString(mtcnRequired));
+            }
+            CSVHelper.Write(THOutputFilePath, builder.ToString());
+            builder.Clear();
         }
 
         private List<Transaction> FilterTransactions()
@@ -164,16 +224,6 @@ namespace BoT.Business
             }
         }
 
-        public string GenerateOutputCSV(List<OutputTransaction> outputs)
-        {
-            string csv = string.Empty;      
-            foreach (var t in outputs)
-            {
-                csv += t.ToString() + System.Environment.NewLine;
-            }
-            return csv;
-        }
-       
 
     }
 }

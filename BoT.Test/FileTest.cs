@@ -26,7 +26,7 @@ namespace BoT.Test
         public void GetStatusFile()
         {
             string filePath = @"C:\central\report2.csv";
-            var manager = new StatusFileManager();
+            var manager = new OnlineFileManager();
 
             List<OnlineTransaction> statusTransactions = manager.ReadReport(filePath);
 
@@ -39,7 +39,7 @@ namespace BoT.Test
         public void GetNonApprovedOnly()
         {
             string filePath = @"C:\central\report2.csv";
-            var manager = new StatusFileManager();
+            var manager = new OnlineFileManager();
 
             List<OnlineTransaction> statusTransactions = manager.GetNonApprovedTransaction(filePath);
 

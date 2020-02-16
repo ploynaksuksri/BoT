@@ -6,17 +6,22 @@ using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using log4net;
+using log4net.Config;
 
 namespace BoT
 {
     static class Program
     {
+        private static readonly ILog _logger = LogManager.GetLogger(typeof(Program));
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+            log4net.Config.XmlConfigurator.Configure();
+            _logger.Info("Running Form");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             var report = GetReportGenerator();
@@ -33,7 +38,7 @@ namespace BoT
                 BotCodeFile = GetSetting("BotCodeFile")
             };
 
-            ReportGenerator2 reportGenerator = new ReportGenerator2(fileList);
+            ReportGenerator2 reportGenerator = new ReportGenerator2(_logger, fileList);
             return reportGenerator;
         }
 

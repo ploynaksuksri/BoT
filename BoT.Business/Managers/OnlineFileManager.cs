@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace BoT.Business.Managers
 {
-    public class StatusFileManager : IReportManager<OnlineTransaction>
+    public class OnlineFileManager : IReportManager<OnlineTransaction>
     {
         public const char Delimiter = ';';
         public const int NoColumns = 26;
@@ -28,10 +28,6 @@ namespace BoT.Business.Managers
                 var items = CSVHelper.ParseLine(line, Delimiter);
                 var item = GetItem(items);
                 reports.Add(item);
-                if (items.Length == NoColumns)
-                {
-                   
-                }
             }
             return reports;
         }

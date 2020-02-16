@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BoT.Models
+﻿namespace BoT.Models
 {
     public class OutputTransaction : Transaction
     {
@@ -15,12 +11,22 @@ namespace BoT.Models
 
         public bool IsValid { get; set; } = true;
 
-        public override string ToString()
+        public string ToString(bool mtcnRequired = false)
         {
-            return $"{BotLicenseNo};{TransactionDateString};{TransactionType};{IsThaiCode};{Customer1.FullName};" +
+            var output = $"{BotLicenseNo};{TransactionDateString};{TransactionType};{IsThaiCode};{Customer1.FullName};" +
                 $"{IdNumber};{Nationality};{DocumentTypeCode};{Customer1.Address};{CustomerType};{Customer2.FullName};" +
                 $"{Customer2.CountryCode};;{ObjectiveCode};{BotOfflineCode};{PaymentInstrumentCode};" +
                 $"{CurrencyCode};{ExchangeRate};{ForeingCurrencyPrincipal};{ThaiBahtPrincipal}";
+
+            if (mtcnRequired)
+            {
+                output = $"{MTCN};" + output;
+            }
+            return output;
+        }
+
+        public OutputTransaction()
+        {
         }
 
         public OutputTransaction(Transaction t)

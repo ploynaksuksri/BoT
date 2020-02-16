@@ -10,7 +10,7 @@ namespace BoT.Business
     public class ReportGenerator
     {
         private TransactionManager _mainFileManager;
-        private StatusFileManager _statusFileManager;
+        private OnlineFileManager _statusFileManager;
         private RefundFileManager _refundFileManager;
         private AmazonFileManager _amazoneFileManager;
         private ComplianceFileManager _complianceFileManager;
@@ -22,7 +22,7 @@ namespace BoT.Business
             _fileList = fileList;
             var codeManager = new CodeConversionManager(_fileList.CountryCodeFile, _fileList.CurrencyCodeFile);
             _mainFileManager = new TransactionManager(codeManager);
-            _statusFileManager = new StatusFileManager();
+            _statusFileManager = new OnlineFileManager();
             _refundFileManager = new RefundFileManager();
             _amazoneFileManager = new AmazonFileManager();
             _complianceFileManager = new ComplianceFileManager(_fileList.DocumentTypeCodeFile);

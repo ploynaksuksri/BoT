@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Linq;
+using log4net;
 
 namespace BoT.Business.Managers
 {
     public class BotCodeManager : BaseCodeManager<BotCode>
     {
-
+        private ILog _logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public Dictionary<string, BotCode> CodeDict { get; set; } = new Dictionary<string, BotCode>();
 
         public BotCodeManager(string codeFilePath)
@@ -60,6 +61,7 @@ namespace BoT.Business.Managers
             }
             else
             {
+                _logger.Info($"{t.MTCN} can't map BotLicenceNo {t.BotLicenseNo}");
                 t.IsValid = false;
             }
            

@@ -29,6 +29,7 @@ namespace BoT
             _report = report;
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
             var result = openFileDialog1.ShowDialog();
@@ -59,19 +60,18 @@ namespace BoT
             var result = openFileDialog3.ShowDialog();
             if (result == DialogResult.OK)
             {
-                var filePath = openFileDialog3.FileName;
-                progressBar3.Visible = true;
+                var filePath = openFileDialog3.FileName;            
                 var t = _report.GetRefundTransactions(filePath);
                 dataGridView3.DataSource = DataTableHelper.ConvertTo<RefundTransaction>(t);
                 dataGridView3.AutoGenerateColumns = true;
                 dataGridView3.AutoResizeColumns();
-                progressBar3.Visible = false;
             }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             _report.GenerateReport();
+            MessageBox.Show($"Output file: {_report.OutputFilePath}", "Output");
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -95,11 +95,44 @@ namespace BoT
             {
                 var filePath = openFileDialog5.FileName;
                 var t = _report.GetComplianceList(filePath);
-                //dataGridView4.DataSource = DataTableHelper.ConvertTo<>();
+                //dataGridView4.DataSource = DataTableHelper.ConvertTo<Dictionary<string,string>>(t);
                 dataGridView4.AutoGenerateColumns = true;
                 dataGridView4.AutoResizeColumns();
 
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog6.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                var filePath = openFileDialog6.FileName;
+                var t = _report.GetMonitoringTransactions(filePath);
+                dataGridView6.DataSource = DataTableHelper.ConvertTo<MonitoringFile>(t);
+                dataGridView6.AutoGenerateColumns = true;
+                dataGridView6.AutoResizeColumns();
+            }
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            _report.Clear();
+        }
+
+        private void Next_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex++;
+        }
+
+        private void Back_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex--;
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }
