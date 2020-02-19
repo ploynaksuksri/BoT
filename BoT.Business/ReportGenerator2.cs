@@ -14,11 +14,13 @@ namespace BoT.Business
         private FileList _fileList;
         public string OutputFilePath = @"C:\central\output.csv";
         public string THOutputFilePath = @"C:\central\thoutput.csv";
+        public string InvalidOutputFilePath = @"C:\central\invalidoutput.csv";
+        public const string OnlineBotLicence = "MT125610008";
         public List<Transaction> Transactions { get; set; }
         public List<OnlineTransaction> OnlineTransactions { get; set; }
         public List<RefundTransaction> RefundTransactions { get; set; }
         public List<AmazonFile> AmazonTransactions { get; set; }
-        public Dictionary<string, string> ComplianceDict { get; set; }
+        public Dictionary<string, ComplianceFile> ComplianceDict { get; set; }
         public List<MonitoringFile> MonitoringTransactions { get; set; }
         public List<Transaction> FilteredTransactions { get; set; }
 
@@ -81,7 +83,7 @@ namespace BoT.Business
             return AmazonTransactions;
         }
 
-        public Dictionary<string, string> GetComplianceList(string filePath)
+        public Dictionary<string, ComplianceFile> GetComplianceList(string filePath)
         {
             _fileList.ComplianceFile = filePath;
             ComplianceFileManager manager = new ComplianceFileManager(_fileList.DocumentTypeCodeFile);
@@ -111,9 +113,9 @@ namespace BoT.Business
                 var item = new OutputTransaction(t);
                 item.IsThaiCode = GetIsThaiCode(item.Nationality);
                 item.CustomerType = item.IsAmazon ? TransactionConst.Personal : TransactionConst.NonPersonal;
-                if (ComplianceDict.TryGetValue(item.MTCN, out string code))
+                if (ComplianceDict.TryGetValue(item.MTCN, out ComplianceFile code))
                 {
-                    item.DocumentTypeCode = code;
+                    item.DocumentTypeCode = code.DocumentTypeCode;
                 }
                 else
                 {
@@ -136,13 +138,7 @@ namespace BoT.Business
                     }
                 }
 
-                if (item.IsValid)
-                {
-                   
-                }
-
                 output.Add(item);
-
             }
             return output;
         }
@@ -152,28 +148,30 @@ namespace BoT.Business
             var mtcnRequired = true;
             var output = GetOutput();
             var thOutputs = output.Where(e => e.Customer2.CountryCode == "TH");
-             
-            var builder = new StringBuilder();
-            foreach (var t in output.Except(thOutputs))
-            {
-                builder.AppendLine(t.ToString(mtcnRequired));
-            }
-            CSVHelper.Write(OutputFilePath, builder.ToString());
-            builder.Clear();
+            var invalidOutputs = output.Where(e => e.IsValid == false);
 
-          
-            foreach(var t in thOutputs)
+            WriteCSV(output.Except(thOutputs).Except(invalidOutputs), OutputFilePath, mtcnRequired);
+            WriteCSV(thOutputs, THOutputFilePath, mtcnRequired);
+            WriteCSV(invalidOutputs, InvalidOutputFilePath, mtcnRequired);
+        }
+
+        public void WriteCSV(IEnumerable<OutputTransaction> outputs, string filePath, bool mtcnRequired)
+        {
+            _logger.Info($"Writing outputs to {filePath}");
+            var builder = new StringBuilder();
+            foreach (var t in outputs)
             {
                 builder.AppendLine(t.ToString(mtcnRequired));
             }
-            CSVHelper.Write(THOutputFilePath, builder.ToString());
+            CSVHelper.Write(filePath, builder.ToString());
             builder.Clear();
+            _logger.Info($"Finished writing outputs to {filePath}");
         }
 
         private List<Transaction> FilterTransactions()
         {
             var discardTranasctions = new List<Transaction>();
-            foreach (var t in Transactions.Where(e => e.BotLicenseNo == "MT125610008"))
+            foreach (var t in Transactions.Where(e => e.BotLicenseNo == OnlineBotLicence))
             {
                 var found = OnlineTransactions.FirstOrDefault(e => e.MTCN == t.MTCN);
                 if (found != null)

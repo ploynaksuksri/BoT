@@ -1,4 +1,5 @@
 ﻿using BoT.Business.Utilities;
+using BoT.Models;
 using ClosedXML.Excel;
 using System;
 using System.Collections.Generic;
@@ -16,14 +17,14 @@ namespace BoT.Business.Managers
             _codes = ReadCodesDict(documentTypeFilePath);
         }
 
-        public Dictionary<string, string> ReadReport(string filePath)
+        public Dictionary<string, ComplianceFile> ReadReport(string filePath)
         {
             if (!File.Exists(filePath))
             {
                 throw new Exception($"File {filePath} doesn't exist.");
             }
 
-            Dictionary<string, string> complianceList = new Dictionary<string, string>();
+            Dictionary<string, ComplianceFile> complianceList = new Dictionary<string, ComplianceFile>();
             using (var workbook = new XLWorkbook(filePath))
             {
                 var worksheet = workbook.Worksheet(1);
@@ -33,7 +34,12 @@ namespace BoT.Business.Managers
                     if (!complianceList.ContainsKey(MTCN))
                     {
                         var documentType = GetValue(row, 40);
-                        complianceList.Add(MTCN, _codes[documentType]);
+                        complianceList.Add(MTCN, new ComplianceFile
+                        {
+                            MTCN = MTCN,
+                            DocumentType = documentType,
+                            DocumentTypeCode = _codes[documentType]
+                        });
                     }
                 }
             }
@@ -64,4 +70,6 @@ namespace BoT.Business.Managers
         public string DocumentType { get; set; }
         public string Code { get; set; }
     }
+
+ 
 }

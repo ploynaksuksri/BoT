@@ -1,4 +1,5 @@
 ﻿using BoT.Business;
+using BoT.Business.Managers;
 using BoT.Business.Utilities;
 using BoT.Models;
 using System;
@@ -39,38 +40,45 @@ namespace BoT
                 if (result == DialogResult.OK)
                 {
                     var filePath = openFileDialog1.FileName;
-                    t = _report.ReadTransactions(filePath);
-                 
+                    t = _report.ReadTransactions(filePath);               
                 }
             });
             dataGridView1.DataSource = DataTableHelper.ConvertTo<Transaction>(t);
             dataGridView1.AutoGenerateColumns = true;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
             var result = openFileDialog2.ShowDialog();
-            if (result == DialogResult.OK)
+            var t = new List<OnlineTransaction>();
+            await Task.Run(() =>
             {
-                var filePath = openFileDialog2.FileName;
-                var t = _report.GetOnlineTransactions(filePath);
-                dataGridView2.DataSource = DataTableHelper.ConvertTo<OnlineTransaction>(t);
-                dataGridView2.AutoGenerateColumns = true;
-                dataGridView2.AutoResizeColumns();
-            }
+                if (result == DialogResult.OK)
+                {
+                    var filePath = openFileDialog2.FileName;
+                    t = _report.GetOnlineTransactions(filePath);
+                }
+            });
+            dataGridView2.DataSource = DataTableHelper.ConvertTo<OnlineTransaction>(t);
+            dataGridView2.AutoGenerateColumns = true;
+            dataGridView2.AutoResizeColumns();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private async void button3_Click(object sender, EventArgs e)
         {
             var result = openFileDialog3.ShowDialog();
-            if (result == DialogResult.OK)
+            var t = new List<RefundTransaction>();
+            await Task.Run(() =>
             {
-                var filePath = openFileDialog3.FileName;            
-                var t = _report.GetRefundTransactions(filePath);
-                dataGridView3.DataSource = DataTableHelper.ConvertTo<RefundTransaction>(t);
-                dataGridView3.AutoGenerateColumns = true;
-                dataGridView3.AutoResizeColumns();
-            }
+                if (result == DialogResult.OK)
+                {
+                    var filePath = openFileDialog3.FileName;
+                    t = _report.GetRefundTransactions(filePath);
+                }
+            });
+            dataGridView3.DataSource = DataTableHelper.ConvertTo<RefundTransaction>(t);
+            dataGridView3.AutoGenerateColumns = true;
+            dataGridView3.AutoResizeColumns();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -79,45 +87,55 @@ namespace BoT
             MessageBox.Show($"Output file: {_report.OutputFilePath}", "Output");
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private async void button5_Click(object sender, EventArgs e)
         {
             var result = openFileDialog4.ShowDialog();
-            if (result == DialogResult.OK)
+            var t = new List<AmazonFile>();
+            await Task.Run(() =>
             {
-                var filePath = openFileDialog4.FileName;
-                var t = _report.GetAmazonTransactions(filePath);
-                dataGridView4.DataSource = DataTableHelper.ConvertTo<AmazonFile>(t);
-                dataGridView4.AutoGenerateColumns = true;
-                dataGridView4.AutoResizeColumns();
-
-            }
+                if (result == DialogResult.OK)
+                {
+                    var filePath = openFileDialog4.FileName;
+                    t = _report.GetAmazonTransactions(filePath);
+                }
+            });
+            dataGridView4.DataSource = DataTableHelper.ConvertTo<AmazonFile>(t);
+            dataGridView4.AutoGenerateColumns = true;
+            dataGridView4.AutoResizeColumns();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private async void button6_Click(object sender, EventArgs e)
         {
             var result = openFileDialog5.ShowDialog();
-            if (result == DialogResult.OK)
+            var t = new Dictionary<string, ComplianceFile>(); 
+            await Task.Run(() =>
             {
-                var filePath = openFileDialog5.FileName;
-                var t = _report.GetComplianceList(filePath);
-                //dataGridView4.DataSource = DataTableHelper.ConvertTo<Dictionary<string,string>>(t);
-                dataGridView4.AutoGenerateColumns = true;
-                dataGridView4.AutoResizeColumns();
-
-            }
+                if (result == DialogResult.OK)
+                {
+                    var filePath = openFileDialog5.FileName;
+                    t = _report.GetComplianceList(filePath);
+                }
+            });
+            dataGridView5.DataSource = DataTableHelper.ConvertTo<ComplianceFile>(t.Values.ToList());
+            dataGridView5.AutoGenerateColumns = true;
+            dataGridView5.AutoResizeColumns();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private async void button7_Click(object sender, EventArgs e)
         {
             var result = openFileDialog6.ShowDialog();
-            if (result == DialogResult.OK)
+            var t = new List<MonitoringFile>();
+            await Task.Run(() =>
             {
-                var filePath = openFileDialog6.FileName;
-                var t = _report.GetMonitoringTransactions(filePath);
-                dataGridView6.DataSource = DataTableHelper.ConvertTo<MonitoringFile>(t);
-                dataGridView6.AutoGenerateColumns = true;
-                dataGridView6.AutoResizeColumns();
-            }
+                if (result == DialogResult.OK)
+                {
+                    var filePath = openFileDialog6.FileName;
+                    t = _report.GetMonitoringTransactions(filePath);
+                }
+            });
+            dataGridView6.DataSource = DataTableHelper.ConvertTo<MonitoringFile>(t);
+            dataGridView6.AutoGenerateColumns = true;
+            dataGridView6.AutoResizeColumns();
         }
 
         private void ClearButton_Click(object sender, EventArgs e)

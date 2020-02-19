@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
 using log4net.Config;
+using System.IO;
 
 namespace BoT
 {
     static class Program
     {
         private static readonly ILog _logger = LogManager.GetLogger(typeof(Program));
+        private static string _basePath = Directory.GetCurrentDirectory();
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -30,12 +32,14 @@ namespace BoT
 
         private static ReportGenerator2 GetReportGenerator()
         {
+            var codesFolder = GetSetting("CodeFolder");
+            var baseCodesFolder = Path.Combine(_basePath, codesFolder);
             FileList fileList = new FileList
             {
-                CountryCodeFile = GetSetting("CountryCodeFile"),
-                CurrencyCodeFile = GetSetting("CurrencyCodeFile"),
-                DocumentTypeCodeFile = GetSetting("DocumentTypeCodeFile"),
-                BotCodeFile = GetSetting("BotCodeFile")
+                CountryCodeFile = Path.Combine(baseCodesFolder, GetSetting("CountryCodeFile")),
+                CurrencyCodeFile = Path.Combine(baseCodesFolder, GetSetting("CurrencyCodeFile")),
+                DocumentTypeCodeFile = Path.Combine(baseCodesFolder, GetSetting("DocumentTypeCodeFile")),
+                BotCodeFile = Path.Combine(baseCodesFolder, GetSetting("BotCodeFile"))
             };
 
             ReportGenerator2 reportGenerator = new ReportGenerator2(_logger, fileList);

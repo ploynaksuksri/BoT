@@ -8,7 +8,7 @@ namespace BoT.Models
     {
         public string MTCN { get; set; }
         public string DocumentType { get; set; }
-        public string ComplianceCode { get; set; }
+        public string DocumentTypeCode { get; set; }
     }
 
 }
