@@ -12,9 +12,7 @@ namespace BoT.Business
     public class ReportGenerator2
     {
         private FileList _fileList;
-        public string OutputFilePath = @"C:\central\output.csv";
-        public string THOutputFilePath = @"C:\central\thoutput.csv";
-        public string InvalidOutputFilePath = @"C:\central\invalidoutput.csv";
+        public OutputFiles OutputFiles = new OutputFiles();
         public const string OnlineBotLicence = "MT125610008";
         public List<Transaction> Transactions { get; set; }
         public List<OnlineTransaction> OnlineTransactions { get; set; }
@@ -150,9 +148,9 @@ namespace BoT.Business
             var thOutputs = output.Where(e => e.Customer2.CountryCode == "TH");
             var invalidOutputs = output.Where(e => e.IsValid == false);
 
-            WriteCSV(output.Except(thOutputs).Except(invalidOutputs), OutputFilePath, mtcnRequired);
-            WriteCSV(thOutputs, THOutputFilePath, mtcnRequired);
-            WriteCSV(invalidOutputs, InvalidOutputFilePath, mtcnRequired);
+            WriteCSV(output.Except(thOutputs).Except(invalidOutputs), OutputFiles.OutputFilePath, !mtcnRequired);
+            WriteCSV(thOutputs, OutputFiles.THOutputFilePath, mtcnRequired);
+            WriteCSV(invalidOutputs, OutputFiles.InvalidOutputFilePath, mtcnRequired);
         }
 
         public void WriteCSV(IEnumerable<OutputTransaction> outputs, string filePath, bool mtcnRequired)

@@ -1,6 +1,7 @@
 ﻿using BoT.Business.Utilities;
 using BoT.Models;
 using ClosedXML.Excel;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,6 +11,8 @@ namespace BoT.Business.Managers
 {
     public class ComplianceFileManager : BaseCodeManager<DocumentCode>
     {
+        private static readonly ILog _logger = LogManager.GetLogger(typeof(ComplianceFileManager));
+
         public static Dictionary<string, string> _codes = new Dictionary<string, string>();
 
         public ComplianceFileManager(string documentTypeFilePath)
@@ -38,8 +41,8 @@ namespace BoT.Business.Managers
                         {
                             MTCN = MTCN,
                             DocumentType = documentType,
-                            DocumentTypeCode = _codes[documentType]
-                        });
+                            DocumentTypeCode = GetDocumentTypeCode(MTCN, documentType)
+                        }); ;
                     }
                 }
             }
@@ -49,6 +52,20 @@ namespace BoT.Business.Managers
         private string GetValue(IXLRow row, int index)
         {
             return row.Cell(index).GetValue<string>().Trim();
+        }
+
+        private string GetDocumentTypeCode(string mtcn, string documentType)
+        {
+            if (_codes.TryGetValue(documentType, out string code))
+            {
+                return code;
+            }
+            else
+            {
+                var errorMessage = $"Cannot find document type code for MTCN {mtcn}, document type {documentType}";
+                _logger.Error(errorMessage);
+                throw new Exception(errorMessage);
+            }
         }
 
         public Dictionary<string, string> ReadCodesDict(string filePath)

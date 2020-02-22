@@ -22,12 +22,19 @@ namespace BoT
         [STAThread]
         static void Main()
         {
-            log4net.Config.XmlConfigurator.Configure();
-            _logger.Info("Running Form");
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            var report = GetReportGenerator();
-            Application.Run(new Form1(report));
+            try
+            {
+                log4net.Config.XmlConfigurator.Configure();
+                _logger.Info("Running Form");
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                var report = GetReportGenerator();
+                Application.Run(new Form1(report));
+            }
+            catch(Exception ex)
+            {
+                _logger.Error(ex);
+            }           
         }
 
         private static ReportGenerator2 GetReportGenerator()
