@@ -61,7 +61,7 @@ namespace BoT.Business.Managers
             }
             else
             {
-                _logger.Info($"{t.MTCN} can't map BotLicenceNo {t.BotLicenseNo}");
+                _logger.Info($"{t.MTCN} cannot map BotLicenceNo {t.BotLicenseNo}");
                 t.IsValid = false;
             }
            

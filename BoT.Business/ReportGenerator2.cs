@@ -148,7 +148,7 @@ namespace BoT.Business
             var thOutputs = output.Where(e => e.Customer2.CountryCode == "TH");
             var invalidOutputs = output.Where(e => e.IsValid == false);
 
-            WriteCSV(output.Except(thOutputs).Except(invalidOutputs), OutputFiles.OutputFilePath, !mtcnRequired);
+            WriteCSV(output.Except(thOutputs).Except(invalidOutputs), OutputFiles.OutputFilePath, mtcnRequired);
             WriteCSV(thOutputs, OutputFiles.THOutputFilePath, mtcnRequired);
             WriteCSV(invalidOutputs, OutputFiles.InvalidOutputFilePath, mtcnRequired);
         }
