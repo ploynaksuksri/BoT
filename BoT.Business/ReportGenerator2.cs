@@ -135,6 +135,11 @@ namespace BoT.Business
                         }
                     }
                 }
+                else
+                {
+                    item.IsValid = false;
+                    _logger.Info($"{item.MTCN} - Objective ({item.Objective} is not in the list or missing.");
+                }
 
                 output.Add(item);
             }
