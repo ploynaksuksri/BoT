@@ -8,8 +8,8 @@
         public string PaymentInstrumentCode { get; set; }
         public string CustomerType { get; set; }  // Step8 - 176068 นิติบุคคล
         public string IsThaiCode { get; set; } = string.Empty; // Step7 - Thai or non Thai
-
         public bool IsValid { get; set; } = true;
+        public bool IsDuplicate { get; set; } = false;
 
         public string ToString(bool mtcnRequired = false)
         {
@@ -21,6 +21,11 @@
             if (mtcnRequired)
             {
                 output = $"{MTCN};" + output;
+            }
+            
+            if (IsDuplicate)
+            {
+                output = "*" + output;
             }
             return output;
         }

@@ -66,7 +66,7 @@ namespace BoT.Business.Managers
                 ForeingCurrencyPrincipal = items[14].GetDecimal(),
                 ThaiBahtPrincipal = items[15].GetDecimal(),
                 MTCN = items[16]
-            };
+            };          
         }
 
         public void TransformItem(Transaction item)
@@ -74,7 +74,10 @@ namespace BoT.Business.Managers
             item.CurrencyCode = _codeManager.GetCurrencyCode(item.CurrencyCode);
             item.Nationality = _codeManager.GetCountryCode(item.Nationality);
             item.Customer2.CountryCode = _codeManager.GetCountryCode(item.Customer2.CountryCode);
-
+            if (item.Customer2.FullName.ToUpper().Trim() == "AMAZON")
+            {
+                item.IsAmazon = true;
+            }
             var newTransactionType = string.Empty;
             switch (item.TransactionType)
             {

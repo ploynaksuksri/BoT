@@ -138,7 +138,7 @@ namespace BoT.Business
                 else
                 {
                     item.IsValid = false;
-                    _logger.Info($"{item.MTCN} - Objective ({item.Objective} is not in the list or missing.");
+                    _logger.Info($"{item.MTCN} - Objective ({item.Objective}) is not in the list or missing.");
                 }
 
                 output.Add(item);
@@ -150,10 +150,38 @@ namespace BoT.Business
         {
             var mtcnRequired = true;
             var output = GetOutput();
-            var thOutputs = output.Where(e => e.Customer2.CountryCode == "TH");
-            var invalidOutputs = output.Where(e => e.IsValid == false);
+            //var thOutputs = output.Where(e => e.Customer2.CountryCode == "TH");
+            //var invalidOutputs = output.Where(e => e.IsValid == false).Except(thOutputs);
+            var thOutputs = new List<OutputTransaction>();
+            var invalidOutputs = new List<OutputTransaction>();
+            var filteredOutput = new List<OutputTransaction>();
+            foreach(var t in output)
+            {
+                if (output.Where(e => e.MTCN == t.MTCN).Count() > 1)
+                {
+                    t.IsDuplicate = true;
+                }
 
-            WriteCSV(output.Except(thOutputs).Except(invalidOutputs), OutputFiles.OutputFilePath, mtcnRequired);
+                if (t.Customer2.CountryCode == "TH")
+                {
+                    thOutputs.Add(t);
+                }
+                else
+                {
+                    if (t.IsValid == false || t.IsDuplicate)
+                    {
+                        invalidOutputs.Add(t);
+                    }
+                    else
+                    {
+                        filteredOutput.Add(t);
+                    }
+                }
+            }
+          
+            
+
+            WriteCSV(filteredOutput, OutputFiles.OutputFilePath, mtcnRequired);
             WriteCSV(thOutputs, OutputFiles.THOutputFilePath, mtcnRequired);
             WriteCSV(invalidOutputs, OutputFiles.InvalidOutputFilePath, mtcnRequired);
         }

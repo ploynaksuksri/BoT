@@ -61,7 +61,13 @@
             this.dataGridView6 = new System.Windows.Forms.DataGridView();
             this.button7 = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button20 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button19 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
@@ -70,12 +76,6 @@
             this.openFileDialog6 = new System.Windows.Forms.OpenFileDialog();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.button19 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button20 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -479,6 +479,62 @@
             this.tabPage4.Text = "Output";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.button20);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.button19);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(36, 34);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1106, 795);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(264, 173);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(174, 56);
+            this.button20.TabIndex = 5;
+            this.button20.Text = "Clear";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox1.Location = new System.Drawing.Point(233, 109);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(374, 30);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.Text = "output.txt";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(233, 29);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(129, 52);
+            this.button19.TabIndex = 1;
+            this.button19.Text = "Browse";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(34, 109);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(149, 25);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Output filename";
+            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(39, 173);
@@ -488,6 +544,15 @@
             this.button4.Text = "Generate Report";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(34, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(179, 25);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Select output folder";
             // 
             // openFileDialog1
             // 
@@ -519,71 +584,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
-            // 
-            // button19
-            // 
-            this.button19.Location = new System.Drawing.Point(233, 29);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(129, 52);
-            this.button19.TabIndex = 1;
-            this.button19.Text = "Browse";
-            this.button19.UseVisualStyleBackColor = true;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(179, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Select output folder";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 109);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(149, 25);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Output filename";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.button20);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.button19);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(36, 34);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1106, 795);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Location = new System.Drawing.Point(233, 109);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(374, 30);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "output.csv";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // button20
-            // 
-            this.button20.Location = new System.Drawing.Point(264, 173);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(174, 56);
-            this.button20.TabIndex = 5;
-            this.button20.Text = "Clear";
-            this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // Form1
             // 
