@@ -191,6 +191,7 @@ namespace BoT
             var result = folderBrowserDialog1.ShowDialog();
             if(result == DialogResult.OK)
             {
+                label3.Text = folderBrowserDialog1.SelectedPath;
                 _report.OutputFiles.OutputDirectory = folderBrowserDialog1.SelectedPath;
             }
             button4.Enabled = IsAllowed();
@@ -200,6 +201,7 @@ namespace BoT
         {
             folderBrowserDialog1.Reset();
             textBox1.Clear();
+            label3.Text = string.Empty;
             _report.OutputFiles.Clear();
         }
 
