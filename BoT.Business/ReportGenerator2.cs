@@ -141,6 +141,17 @@ namespace BoT.Business
                     _logger.Info($"{item.MTCN} - Objective ({item.Objective}) is not in the list or missing.");
                 }
 
+                // Online item is not in Online file.
+                if (item.BotLicenseNo == OnlineBotLicence)
+                {
+                    var inOnlineFile = OnlineTransactions.Exists(e => e.MTCN == item.MTCN);
+                    item.IsValid = inOnlineFile;
+                    if (inOnlineFile == false)
+                    {
+                        _logger.Info($"{item.MTCN} is not in Online file.");
+                    }
+                }
+
                 output.Add(item);
             }
             return output;
@@ -150,8 +161,6 @@ namespace BoT.Business
         {
             var mtcnRequired = true;
             var output = GetOutput();
-            //var thOutputs = output.Where(e => e.Customer2.CountryCode == "TH");
-            //var invalidOutputs = output.Where(e => e.IsValid == false).Except(thOutputs);
             var thOutputs = new List<OutputTransaction>();
             var invalidOutputs = new List<OutputTransaction>();
             var filteredOutput = new List<OutputTransaction>();
@@ -178,8 +187,6 @@ namespace BoT.Business
                     }
                 }
             }
-          
-            
 
             WriteCSV(filteredOutput, OutputFiles.OutputFilePath, mtcnRequired);
             WriteCSV(thOutputs, OutputFiles.THOutputFilePath, mtcnRequired);

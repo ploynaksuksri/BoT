@@ -33,7 +33,7 @@ namespace BoT.Models
     public class TransactionConst
     {
         public const string IsThai = "176001";
-        public const string NonThai = "170067";
+        public const string NonThai = "176067";
 
         public const string Personal = "176068";
         public const string NonPersonal = "176067";

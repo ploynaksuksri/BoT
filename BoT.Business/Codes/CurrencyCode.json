@@ -1,55 +1,68 @@
 [
   {
-    "From": "EUR",
-    "To": "CYP"
+    "From": "CYP",
+    "To": "EUR"
   },
   {
-    "From": "CSK",
-    "To": "CZK"
+    "From": "CZK",
+    "To": "CSK"
+
   },
   {
-    "From": "VEB",
-    "To": "VEF"
+    "From": "VEF",
+    "To": "VEB"
+
   },
   {
-    "From": "VIB",
-    "To": "VEF"
+    "From": "VEF",
+    "To": "VIB"
+
   },
   {
-    "From": "MXP",
-    "To": "MXN"
+    "From": "MXN",
+    "To": "MXP"
+
   },
   {
-    "From": "UYP",
-    "To": "UYU"
+    "From": "UYU",
+    "To": "UYP"
+
   },
   {
-    "From": "SDG",
-    "To": "SDD"
+    "From": "SDD",
+    "To": "SDG"
+
   },
   {
-    "From": "TRY",
-    "To": "TRL"
+    "From": "TRL",
+    "To": "TRY"
+
   },
   {
-    "From": "ZMK",
-    "To": "ZMW"
+    "To": "ZMK",
+    "From": "ZMW"
+
+
   },
   {
-    "From": "ZWD",
-    "To": "ZWL"
+    "From": "ZWL",
+    "To": "ZWD"
+
   },
   {
-    "From": "AON",
-    "To": "AOA"
+    "From": "AOA",
+    "To": "AON"
+
   },
   {
-    "From": "BBO",
-    "To": "BBD"
+    "From": "BBD",
+    "To": "BBO"
+
   },
   {
-    "From": "MRU",
-    "To": "MRO"
+    "From": "MRO",
+    "To": "MRU"
+
   }
 
 ]
