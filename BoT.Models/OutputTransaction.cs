@@ -14,7 +14,7 @@
         public string ToString(bool mtcnRequired = false)
         {
             var output = $"{BotLicenseNo};{TransactionDateString};{TransactionType};{IsThaiCode};{Customer1.FullName};" +
-                $"{IdNumber};{DocumentTypeCode};{Nationality};{Customer1.Address};{CustomerType};{Customer2.FullName};" +
+                $"{IdNumber};{Nationality};{DocumentTypeCode};{Customer1.Address};{CustomerType};{Customer2.FullName};" +
                 $"{Customer2.CountryCode};;{ObjectiveCode};{BotOfflineCode};{PaymentInstrumentCode};" +
                 $"{CurrencyCode};{ExchangeRate};{ForeingCurrencyPrincipal};{ThaiBahtPrincipal}";
 
