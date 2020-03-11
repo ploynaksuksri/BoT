@@ -105,9 +105,16 @@ namespace BoT.Business
 
             BotCodeManager botCodeManager = new BotCodeManager(_fileList.BotCodeFile);
             List<OutputTransaction> output = new List<OutputTransaction>();
-            foreach (var t in FilteredTransactions)
+
+#if DEBUG
+            foreach(var t  in FilteredTransactions.Where(e => e.BotLicenseNo == OnlineBotLicence))
             {
-               
+                _logger.Info($"{t.MTCN} - {t.FundInMethod}");
+            }
+#endif
+
+            foreach (var t in FilteredTransactions)
+            {               
                 var item = new OutputTransaction(t);
                 item.IsThaiCode = GetIsThaiCode(item.Nationality);
                 item.CustomerType = item.IsAmazon ? TransactionConst.Personal : TransactionConst.NonPersonal;

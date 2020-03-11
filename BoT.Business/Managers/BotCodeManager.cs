@@ -1,11 +1,6 @@
 ﻿using BoT.Models;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Linq;
 using log4net;
+using System.Collections.Generic;
 
 namespace BoT.Business.Managers
 {
@@ -48,12 +43,12 @@ namespace BoT.Business.Managers
 
                 if (t.BotLicenseNo == "MT125610008")
                 {
-                    if (t.FundInMethod == "Direct Debit")
+                    if (t.FundInMethod?.ToLower() == "Direct Debit".ToLower())
                     {
                         t.PaymentInstrumentCode = "0753600003";
                     }
-
-                    if (t.FundInMethod == "Credit/Debit Card")
+               
+                    if (t.FundInMethod?.ToLower() == "Credit/Debit card".ToLower())
                     {
                         t.PaymentInstrumentCode = "0753600004";
                     }
