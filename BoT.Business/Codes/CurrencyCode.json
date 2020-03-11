@@ -1,68 +1,56 @@
 [
+
   {
-    "From": "CYP",
-    "To": "EUR"
+    "From": "CSK",
+    "To": "CZK"
   },
   {
-    "From": "CZK",
-    "To": "CSK"
-
+    "From": "VEB",
+    "To": "VEF"
   },
   {
-    "From": "VEF",
-    "To": "VEB"
-
+    "From": "VIB",
+    "To": "VEF"
   },
   {
-    "From": "VEF",
-    "To": "VIB"
-
+    "From": "MXP",
+    "To": "MXN"
   },
   {
-    "From": "MXN",
-    "To": "MXP"
-
+    "From": "UYP",
+    "To": "UYU"
   },
   {
-    "From": "UYU",
-    "To": "UYP"
+    "From": "SDG",
+    "To": "SDD"
+  },
 
+  {
+    "From": "ZMK",
+    "To": "ZMW"
   },
   {
-    "From": "SDD",
-    "To": "SDG"
-
+    "From": "ZWD",
+    "To": "ZWL"
   },
   {
-    "From": "TRL",
-    "To": "TRY"
-
+    "From": "AON",
+    "To": "AOA"
   },
   {
-    "To": "ZMK",
-    "From": "ZMW"
-
-
+    "From": "BBO",
+    "To": "BBD"
   },
   {
-    "From": "ZWL",
-    "To": "ZWD"
-
+    "From": "MRU",
+    "To": "MRO"
   },
   {
-    "From": "AOA",
-    "To": "AON"
-
+    "From": "STN",
+    "To": "STD"
   },
   {
-    "From": "BBD",
-    "To": "BBO"
-
-  },
-  {
-    "From": "MRO",
-    "To": "MRU"
-
+    "From": "BYN",
+    "To": "BYR"
   }
-
 ]
